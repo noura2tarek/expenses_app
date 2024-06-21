@@ -4,6 +4,8 @@ import 'package:expenses_app/view/widgets/expenses_list.dart';
 import 'package:expenses_app/view/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/chart.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -30,9 +32,15 @@ class _HomeScreenState extends State<HomeScreen> {
         category: Category.Health),
     ExpenseModel(
       title: AppStrings.cinema,
-      amount: 70.0,
+      amount: 90.0,
       date: DateTime.now(),
       category: Category.Entertainment,
+    ),
+    ExpenseModel(
+      title: 'Travel',
+      amount: 100.0,
+      date: DateTime.now(),
+      category: Category.Travel,
     ),
   ];
 
@@ -73,6 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Column(
         children: [
+          Chart(expenses: _registeredExpenses,),
           Expanded(
             child: ExpensesList(
               expensesList: _registeredExpenses,
